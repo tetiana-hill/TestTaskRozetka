@@ -2,8 +2,6 @@ import com.codeborne.selenide.Configuration;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import java.io.IOException;
-
 import static com.codeborne.selenide.Selenide.*;
 
 public class RozetkaTest {
@@ -15,15 +13,20 @@ public class RozetkaTest {
         open("http://rozetka.com.ua/");
     }
 
-
     @Test
     public void mainTestRozetka() throws Exception {
+        MainPage mainPage = new MainPage();
+                mainPage.goToCategory();
 
-        CheckSort checkSort = new CheckSort();
-                checkSort.checkSortPrice();
+        CatalogPage catPage = new CatalogPage();
+                catPage.goToListing();
+
+        ListingPage listing = new ListingPage();
+                listing.applySort();
+                listing.checkSortPrice();
+                listing.loadNextItems();
+                listing.promoGoods();
 
 
-        Goods goods = new Goods();
-        goods.promoGoods();
     }
 }
