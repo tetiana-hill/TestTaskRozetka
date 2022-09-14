@@ -14,7 +14,7 @@ public class RozetkaTest {
     }
 
     @Test
-    public void mainTestRozetka() throws Exception {
+    public void mainTestRozetka() {
         MainPage mainPage = new MainPage();
                 mainPage.goToCategory();
 
